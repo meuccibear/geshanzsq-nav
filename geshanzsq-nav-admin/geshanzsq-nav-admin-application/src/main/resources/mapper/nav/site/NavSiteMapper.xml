@@ -11,6 +11,9 @@
         <result column="site_url" property="siteUrl" />
         <result column="sort" property="sort" />
         <result column="click_count" property="clickCount" />
+        <result column="score" property="score" />
+        <result column="free" property="free" />
+        <result column="reasonable" property="reasonable" />
         <result column="status" property="status" />
         <result column="fk_create_user_id" property="createUserId" />
         <result column="gmt_create" property="gmtCreate" />
@@ -24,6 +27,9 @@
         <result column="site_name" property="siteName" />
         <result column="site_url" property="siteUrl" />
         <result column="site_description" property="siteDescription" />
+        <result column="score" property="score" />
+        <result column="free" property="free" />
+        <result column="reasonable" property="reasonable" />
     </resultMap>
 
     <!-- 获取最大排序 -->
@@ -48,7 +54,10 @@
             site_name,
             site_path,
             site_description,
-            site_url
+            site_url,
+            score,
+            `free`,
+            reasonable
         from nav_site
         where status = #{status}
         <choose>
@@ -76,7 +85,10 @@
 
     <!-- 站內网站搜索 -->
     <select id="selectSiteSearchList" resultMap="NavClientSiteSearchMap">
-        select s.id, s.site_name, s.site_url, s.site_description, c.category_name from nav_site s
+        select s.id, s.site_name, s.site_url, s.site_description,
+        s.score,
+        s.`free`,
+        s.reasonable, c.category_name from nav_site s
         inner join nav_category c on s.fk_category_id = c.id
         where s.status = #{status}
         and (s.site_name like concat('%', #{searchContent}, '%') or s.site_description like concat('%', #{searchContent}, '%'))

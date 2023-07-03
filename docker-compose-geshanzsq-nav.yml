@@ -1,0 +1,22 @@
+version: '2'
+services:
+  Api:
+    image: aa:0.1
+    container_name: api
+    ports:
+      - "8083:8083"
+    environment:
+      - spring.profiles.active=prod
+      - spring.datasource.password=Zp19491225
+    restart: always
+    network_mode: "host"
+
+  Vue:
+    image: zhuozhuang/geshanzsq-nav-vue:0.1
+    container_name: vue
+#    network_mode: "host"
+#    depends_on:
+#      - hntApi
+    ports:
+      - "80:80"
+    restart: always

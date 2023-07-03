@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.geshanzsq.admin.client.nav.dto.ClientNavCommentAddDTO;
 import com.geshanzsq.admin.client.nav.vo.ClientNavCommentTreeVO;
-import com.geshanzsq.admin.nav.category.vo.NavCategoryTreeVO;
 import com.geshanzsq.admin.nav.comment.constant.NavCommentConstant;
 import com.geshanzsq.admin.nav.comment.dto.NavCommentPageDTO;
 import com.geshanzsq.admin.nav.comment.dto.NavCommentRejectDTO;
@@ -145,6 +144,8 @@ public class NavCommentServiceImpl extends BaseServiceImpl<NavCommentMapper, Nav
         }
         return false;
     }
+
+
 
     /**
      * 是否开启不用登录就能提交评论

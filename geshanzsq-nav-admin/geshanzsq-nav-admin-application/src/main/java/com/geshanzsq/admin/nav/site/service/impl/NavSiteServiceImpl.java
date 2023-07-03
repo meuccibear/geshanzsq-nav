@@ -1,5 +1,6 @@
 package com.geshanzsq.admin.nav.site.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.geshanzsq.admin.client.nav.service.ClientNavService;
 import com.geshanzsq.admin.client.search.vo.NavClientSiteSearchVO;
@@ -85,7 +86,9 @@ public class NavSiteServiceImpl extends BaseServiceImpl<NavSiteMapper, NavSite> 
      */
     @Override
     public void updateById(NavSiteUpdateDTO updateDTO) {
+        log.info("updateDTO:{}", JSON.toJSONString(updateDTO));
         NavSite navSite = NavSiteConverter.INSTANCE.convert(updateDTO);
+        log.info("navSite:{}", JSON.toJSONString(navSite));
         navSiteMapper.updateById(navSite);
         // 清除缓存，等后续访问时会自动从数据库获取
         AsyncManager.me().execute(() -> clientNavService.removeCache());

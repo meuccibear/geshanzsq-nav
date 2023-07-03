@@ -34,12 +34,12 @@ module.exports = {
   /**
    * 显示搜索
    */
-  searchOpen: true,
+  searchOpen: false,
 
   /**
    * 显示天气
    */
-  weatherOpen: true,
+  weatherOpen: false,
 
   /**
    * 是否显示网站描述

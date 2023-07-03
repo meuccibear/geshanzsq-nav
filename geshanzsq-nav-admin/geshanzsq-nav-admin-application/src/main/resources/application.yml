@@ -69,7 +69,7 @@ file-upload:
 
 # 接口文档配置
 swagger:
-  title: 格姗导航接口文档
+  title: I.SALE接口文档
   description: 包含用户管理、菜单管理、角色管理、数据字典、API 管理、参数配置、登录日志、操作日志、导航分类管理、网站管理等功能
   author: geshanzsq
   url: http://gesdh.cn
@@ -94,6 +94,7 @@ security:
     - /bing/getBingImage
     - /nav/site/updateClickCount/*
     - /client/nav/category/site/list
+    - /client/nav/getCarouselData
     - /client/nav/category/list
     - /client/nav/comment/**
     - /client/search/**

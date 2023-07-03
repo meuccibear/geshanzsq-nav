@@ -33,6 +33,24 @@ public class NavSiteClientVO implements Serializable {
     @ApiModelProperty("网站描述")
     private String siteDescription;
 
+    /**
+     * 分数
+     */
+    @ApiModelProperty("分数")
+    private Integer score;
+
+    /**
+     * 免费（1 免费，2 不免费）
+     */
+    @ApiModelProperty("免费")
+    private Integer free;
+
+    /**
+     * 合理性（1 合理，2 不合理）
+     */
+    @ApiModelProperty("合理性")
+    private Integer reasonable;
+
     @ApiModelProperty("网站地址")
     private String siteUrl;
 

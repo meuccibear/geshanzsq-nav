@@ -38,6 +38,18 @@
             {{ site.siteDescription }}
           </div>
         </el-main>
+        <el-divider direction="vertical" style="height: 4rem;"></el-divider>
+        <el-main class="site-card-main2">
+          <div class="site-title-two" >
+            评分：<span style="color: #67c23a"><strong>{{ site.score}}</strong></span>
+          </div>
+          <div class="site-title-two">
+            费用: <span>{{ ''+ (site.free == 1 ? '免费':'收费') }}</span>
+          </div>
+          <div class="site-title-two">
+            合理性: <span>{{(site.reasonable == 1 ? '':'不') + '合理' }}</span>
+          </div>
+        </el-main>
         <slot name="container-footer"></slot>
       </el-container>
       <slot name="card-footer"></slot>
@@ -110,7 +122,7 @@ function handleSiteCard() {
   .site-card-main {
     padding: 0;
     margin-left: 5px;
-
+    width: 48%;
     .site-title {
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -128,9 +140,23 @@ function handleSiteCard() {
       -webkit-line-clamp: 2;
       overflow: hidden;
       margin-top: 5px;
-      font-size: 14px;
-      height: 39px;
+      font-size: 12px;
+      //height: 39px;
       color: #979898;
+    }
+  }
+
+  .site-card-main2 {
+    margin: 0px;
+    padding: 0;
+    .site-title-two {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      font-size: 12px;
+      color: #373e4a;
+      padding-bottom: 5px;
     }
   }
 }

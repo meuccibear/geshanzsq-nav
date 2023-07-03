@@ -72,6 +72,25 @@
           </el-col>
         </el-row>
       </el-form-item>
+      <el-form-item label="评分" prop="score">
+        <el-input-number
+          v-model="editForm.score"
+          controls-position="right"
+          :min="0"
+          :max="10"
+          @keyup.enter="handleSave"
+        />
+      </el-form-item>
+      <el-form-item label="费用" prop="free">
+        <el-radio-group v-model="editForm.free" @keyup.enter="handleSave">
+          <dictionary-radio code="free" />
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="合理性" prop="reasonable">
+        <el-radio-group v-model="editForm.reasonable" @keyup.enter="handleSave">
+          <dictionary-radio code="reasonable" />
+        </el-radio-group>
+      </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-radio-group v-model="editForm.status" @keyup.enter="handleSave">
           <dictionary-radio code="commonStatus" />
@@ -82,7 +101,7 @@
       <div class="dialog-footer">
         <el-button @click="close">取 消</el-button>
         <el-button type="primary" @click="handleSave" :loading="editLoading"
-          >确 定</el-button
+        >确 定</el-button
         >
       </div>
     </template>
@@ -108,6 +127,9 @@ const editForm = ref({
   id: undefined,
   categoryId: undefined,
   siteName: undefined,
+  score: 10,
+  free: 1,
+  reasonable: 1,
   status: '1',
   sort: 0,
   sitePath: undefined
@@ -120,6 +142,9 @@ const rules = ref({
   siteName: [{ required: true, message: '网站名称不能为空', trigger: 'blur' }],
   siteUrl: [{ required: true, message: '网站链接不能为空', trigger: 'blur' }],
   sort: [{ required: true, message: '排序不能为空', trigger: 'blur' }],
+  score: [{ required: true, message: '评分不能为空', trigger: 'blur' }],
+  free: [{ required: true, message: '费用不能为空', trigger: 'blur' }],
+  reasonable: [{ required: true, message: '合理性不能为空', trigger: 'blur' }],
   status: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
 })
 
@@ -134,6 +159,8 @@ async function show(id, categoryId) {
     // 获取菜单信息
     const { data } = await getById(id)
     editForm.value = data
+    editForm.value.reasonable = editForm.value.reasonable + ''
+    editForm.value.free = editForm.value.free + ''
     editForm.value.status = editForm.value.status + ''
   } else {
     title.value = '新增网站'

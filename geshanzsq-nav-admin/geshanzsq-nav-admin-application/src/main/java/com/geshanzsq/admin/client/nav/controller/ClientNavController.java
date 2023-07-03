@@ -1,10 +1,13 @@
 package com.geshanzsq.admin.client.nav.controller;
 
+import cn.hutool.json.JSONArray;
 import com.geshanzsq.admin.client.nav.service.ClientNavService;
 import com.geshanzsq.admin.client.nav.vo.NavCategoryClientVO;
 import com.geshanzsq.admin.client.nav.vo.NavClientListVO;
+import com.geshanzsq.admin.nav.comment.constant.NavCommentConstant;
 import com.geshanzsq.admin.nav.site.service.NavSiteService;
 import com.geshanzsq.admin.nav.site.vo.NavSiteLatestCollectVO;
+import com.geshanzsq.common.core.util.string.StrUtils;
 import com.geshanzsq.common.core.web.response.ResponseResult;
 import com.geshanzsq.framework.security.util.SecurityUtils;
 import io.swagger.annotations.Api;
@@ -43,5 +46,13 @@ public class ClientNavController {
         List<NavCategoryClientVO> list = clientNavService.categoryList();
         return ResponseResult.success(list);
     }
+
+
+    @ApiOperation("获取轮播图图片")
+    @GetMapping("/getCarouselData")
+    public ResponseResult<String> getCarouselData() {
+        return ResponseResult.success(clientNavService.getCarouselData());
+    }
+
 
 }

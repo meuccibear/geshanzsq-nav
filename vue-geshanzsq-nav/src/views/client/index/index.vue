@@ -7,6 +7,9 @@
             <search class="search" />
           </el-col>
         </el-row>
+        <el-row :gutter="24" type="flex" justify="center" >
+          <carousel :img-list="carouselData" @imgChange="imgChange"></carousel>
+        </el-row>
         <div v-loading="loading" element-loading-text="数据加载中，请稍等...">
           <div v-for="categorySite in siteList" :key="categorySite.id">
             <h4
@@ -42,14 +45,28 @@ import { useStore } from 'vuex'
 import Client from '@/layout/client'
 import SiteCard from '@/components/SiteCard'
 import Search from '@/layout/client/components/Search'
+import Carousel from '@/layout/client/components/Carousel'
 
 import { categorySiteList } from '@/api/client/nav'
+import { getCarouselData } from '@/api/client/comment'
 
 const store = useStore()
-
+const carouselData = ref([])
+async function getCommentCarouselData() {
+  const { data } = await getCarouselData()
+  console.log('data:', data)
+  const items = data.split(',')
+  items.forEach(function(data) {
+    carouselData.value.push({
+      imgUrl: data
+    })
+  })
+}
+const imgChange = (item, i) => {
+  console.log(item, i)
+}
 const searchOpen = computed(() => store.getters['settings/searchOpen'])
 const showCount = computed(() => store.getters['settings/showCount'])
-
 const loading = ref(true)
 const categoryList = ref([])
 const siteList = ref([])
@@ -65,8 +82,10 @@ async function getData() {
   categoryList.value = categories
 
   siteList.value = sites
+
   loading.value = false
 }
 
 getData()
+getCommentCarouselData()
 </script>

@@ -1,6 +1,6 @@
 
 
-# 格姗导航网站
+# I.SALE网站
 
 一个基于 Spring Boot、MyBatis Plus、Vue3、Element Plus 前后端分离的导航网站系统，在线演示地址：[https://gesdh.cn](https://gesdh.cn)。由于工作和个人能力原因，部分技术都是边学习边开发，特别是前端（工作中是后端开发），基本上不熟悉，代码质量和设计，请大家多多指教
 
@@ -8,7 +8,7 @@
 
 QQ 群交流：673465233
 
-微信群：添加我微信：geshanintell，备注：格姗导航
+微信群：添加我微信：geshanintell，备注：I.SALE
 
 码云下载地址（国内推荐）：[https://gitee.com/geshanzsq/geshanzsq-nav](https://gitee.com/geshanzsq/geshanzsq-nav)
 
@@ -217,7 +217,7 @@ server {
 
 ## License
 
-Copyright © 2020-2023 **[格姗导航](https://gesdh.cn)** Released under the **Apache-2.0**.
+Copyright © 2020-2023 **[I.SALE](https://gesdh.cn)** Released under the **Apache-2.0**.
 
 > 注：本导航开源的目的是大家能够在本站的基础之上有所启发，做出更多新的东西，比如自定义导航。并不是让大家照搬所有代码。 如果你使用这个开源项目，请**注明**本项目开源地址。
 

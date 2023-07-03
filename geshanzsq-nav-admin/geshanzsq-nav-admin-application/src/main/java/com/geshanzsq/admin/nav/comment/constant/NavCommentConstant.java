@@ -13,6 +13,9 @@ public class NavCommentConstant {
      */
     public static final String NAV_COMMENT_OPEN = "NAV_COMMENT_OPEN";
 
+
+    public static final String CAROUSEL_DADA = "CAROUSEL_DADA";
+
     /**
      * 是否开启不用登录就能提交评论
      */

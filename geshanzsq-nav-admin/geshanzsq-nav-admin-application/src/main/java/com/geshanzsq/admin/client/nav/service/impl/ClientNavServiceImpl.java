@@ -1,5 +1,6 @@
 package com.geshanzsq.admin.client.nav.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.geshanzsq.admin.client.nav.constant.NavClientConstant;
 import com.geshanzsq.admin.client.nav.mapstruct.ClientNavConverter;
@@ -12,12 +13,16 @@ import com.geshanzsq.admin.client.nav.vo.NavClientListVO;
 import com.geshanzsq.admin.nav.category.mapper.NavCategoryMapper;
 import com.geshanzsq.admin.nav.category.mapstruct.NavCategoryConverter;
 import com.geshanzsq.admin.nav.category.po.NavCategory;
+import com.geshanzsq.admin.nav.comment.constant.NavCommentConstant;
 import com.geshanzsq.admin.nav.site.mapper.NavSiteMapper;
 import com.geshanzsq.admin.nav.site.mapstruct.NavSiteConverter;
 import com.geshanzsq.admin.nav.site.po.NavSite;
 import com.geshanzsq.admin.nav.site.vo.NavSiteClientVO;
+import com.geshanzsq.admin.system.param.service.SysParamService;
 import com.geshanzsq.common.core.enums.CommonStatus;
+import com.geshanzsq.common.core.util.string.StrUtils;
 import com.geshanzsq.common.redis.service.RedisService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +39,11 @@ import java.util.stream.Collectors;
  * @date 2023/1/8
  */
 @Service
+@Slf4j
 public class ClientNavServiceImpl implements ClientNavService {
+
+    @Autowired
+    private SysParamService sysParamService;
 
     @Autowired
     private NavCategoryMapper navCategoryMapper;
@@ -52,7 +61,7 @@ public class ClientNavServiceImpl implements ClientNavService {
         // 从缓存获取分类数据
         List<NavCategoryClientVO> categories = redisService.get(NavClientConstant.CATEGORY_CACHE_PREFIX);
         if (categories == null) {
-            // 从数据库获取
+//             从数据库获取
             return buildCategoryAndSiteList();
         }
 
@@ -112,7 +121,7 @@ public class ClientNavServiceImpl implements ClientNavService {
         });
         siteWrapper.orderByAsc(NavSite::getCategoryId, NavSite::getSort);
         siteWrapper.select(NavSite::getId, NavSite::getCategoryId, NavSite::getSiteName, NavSite::getSitePath,
-                NavSite::getSiteDescription, NavSite::getSiteUrl);
+                NavSite::getSiteDescription, NavSite::getSiteUrl, NavSite::getScore, NavSite::getFree, NavSite::getReasonable);
         List<NavSite> siteSearchList = navSiteMapper.selectList(siteWrapper);
         if (CollectionUtils.isEmpty(siteSearchList)) {
             return clientListVO;
@@ -134,7 +143,6 @@ public class ClientNavServiceImpl implements ClientNavService {
         if (CollectionUtils.isEmpty(lastLevelCategoryList)) {
             return clientListVO;
         }
-
         List<NavSiteClientVO> siteList = NavSiteConverter.INSTANCE.convertCilent(siteSearchList);
 
         // 构建分类下的网站
@@ -157,10 +165,21 @@ public class ClientNavServiceImpl implements ClientNavService {
     }
 
 
+    @Override
+    public String getCarouselData() {
+        String status = sysParamService.getParamValueByKey(NavCommentConstant.CAROUSEL_DADA);
+        log.info("status:{}", status);
+        if (StrUtils.isNotBlank(status)) {
+            return status;
+        }
+        return null;
+    }
+
+
     /**
      * 通过分类 ids 获取所有上级分类
      *
-     * @param categoryIds 分类 ids
+     * @param categoryIds  分类 ids
      * @param categoryList 保存的分类
      */
     private void getCategoryParent(Set<Long> categoryIds, List<NavCategory> categoryList) {
@@ -213,7 +232,7 @@ public class ClientNavServiceImpl implements ClientNavService {
         siteWrapper.eq(NavSite::getStatus, CommonStatus.NORMAL.code);
         siteWrapper.orderByAsc(NavSite::getCategoryId, NavSite::getSort);
         siteWrapper.select(NavSite::getId, NavSite::getCategoryId, NavSite::getSiteName, NavSite::getSitePath,
-                NavSite::getSiteDescription, NavSite::getSiteUrl);
+                NavSite::getSiteDescription, NavSite::getSiteUrl, NavSite::getScore, NavSite::getFree, NavSite::getReasonable);
         List<NavSiteClientVO> siteList = NavSiteConverter.INSTANCE.convertCilent(navSiteMapper.selectList(siteWrapper));
 
         // 构建分类下的网站

@@ -61,6 +61,21 @@ public class NavSite implements Serializable {
     private Integer clickCount;
 
     /**
+     * 分数
+    */
+    private Integer score;
+
+    /**
+     * 免费（1 免费，2 不免费）
+    */
+    private Integer free;
+
+    /**
+     * 合理性（1 合理，2 不合理）
+    */
+    private Integer reasonable;
+
+    /**
      * 状态（1 正常，2 停用）
     */
     private Integer status;

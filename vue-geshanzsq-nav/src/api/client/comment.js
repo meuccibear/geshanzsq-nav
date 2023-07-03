@@ -11,6 +11,16 @@ export function getOpenStatus() {
 }
 
 /**
+ * 获取轮播数据
+ */
+export function getCarouselData() {
+  return request({
+    url: '/client/nav/getCarouselData',
+    method: 'get'
+  })
+}
+
+/**
  * 获取评论树形结构
  */
 export function getTree() {

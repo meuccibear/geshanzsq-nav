@@ -48,6 +48,27 @@ public class NavSiteUpdateDTO implements Serializable {
     @NotNull(message = "排序不能为空")
     private Integer sort;
 
+    /**
+     * 分数
+     */
+    @ApiModelProperty(value = "分数", required = true)
+    @NotNull(message = "分数（大于0 小于10）不能为空")
+    private Integer score;
+
+    /**
+     * 费用（1 免费，2 不免费）
+     */
+    @ApiModelProperty(value = "费用", required = true)
+    @NotNull(message = "费用（1 免费，2 不免费）不能为空")
+    private Integer free;
+
+    /**
+     * 合理性（1 合理，2 不合理）
+     */
+    @ApiModelProperty(value = "合理性", required = true)
+    @NotNull(message = "合理性（1 合理，2 不合理）不能为空")
+    private Integer reasonable;
+
     @ApiModelProperty(value = "状态（1 正常，2 停用）", required = true)
     @NotNull(message = "状态（1 正常，2 停用）不能为空")
     private Integer status;

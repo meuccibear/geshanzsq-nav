@@ -595,7 +595,7 @@ INSERT INTO `nav_site` VALUES (150725316141100477, 150725316141101032, '格姗�
 INSERT INTO `nav_site` VALUES (150725316141100478, 150725316141101037, '人工桌面', '/profile/site/system/3982b997-0e85-4573-bb8c-ccf4db4bf83d.ico', '简洁又可爱的萌妹桌面软件。绝对是美女帅哥、宅男宅女的喜爱。', 'https://lumi.mihoyo.com/#/', 0, 0, '2020-12-03 13:39:48', '2020-12-03 13:39:55', 1, 1, 1);
 INSERT INTO `nav_site` VALUES (150725316141100479, 150725316141101037, '故宫壁纸', '/profile/site/system/6dd9f9cc-d49e-4b32-abcd-5eba13580739.ico', '将历史的精彩收集到自己的手中', 'https://www.dpm.org.cn/lights/royal.html', 11, 0, '2020-12-11 09:10:22', NULL, 1, NULL, 1);
 INSERT INTO `nav_site` VALUES (150725316141100480, 150725316141101037, 'CGWallpapers', '/profile/site/system/0e5e058c-bf93-4c40-b327-b4064a023560.ico', ' 游戏CG壁纸站，超细腻，真假难分', 'https://www.cgwallpapers.com/', 12, 0, '2020-12-11 09:12:58', NULL, 1, NULL, 1);
-INSERT INTO `nav_site` VALUES (150725316141100481, 150725316141101042, '格姗导航 / geshanzsq-nav', '/profile/site/system/logo.jpg', '一个基于 Spring Boot + Vue 前后端分离的导航网站！', 'https://gitee.com/geshanzsq/geshanzsq-nav', 0, 0, '2021-01-05 17:15:46', '2022-11-03 21:45:09', 1, 1, 1);
+INSERT INTO `nav_site` VALUES (150725316141100481, 150725316141101042, 'I.SALE / geshanzsq-nav', '/profile/site/system/logo.jpg', '一个基于 Spring Boot + Vue 前后端分离的导航网站！', 'https://gitee.com/geshanzsq/geshanzsq-nav', 0, 0, '2021-01-05 17:15:46', '2022-11-03 21:45:09', 1, 1, 1);
 INSERT INTO `nav_site` VALUES (150725316141100483, 150725316141101048, '剪映', '/profile/site/system/3bcc9224-2291-4f5c-8675-e10c1c0f570d.jpeg', '轻而易剪，上演大幕。', 'https://lv.ulikecam.com/', 1, 0, '2021-01-07 20:05:59', NULL, 1, NULL, 1);
 INSERT INTO `nav_site` VALUES (150725316141100484, 150725316141101048, 'InShot', '/profile/site/system/9cdf91f4-530d-49b2-bdf1-1d4b4af68c8a.ico', '专业视频剪辑工具，风靡全球。', 'http://inshotapp.com/', 2, 0, '2021-01-07 20:06:02', NULL, 1, NULL, 1);
 INSERT INTO `nav_site` VALUES (150725316141100485, 150725316141101048, '来画', '/profile/site/system/544f582c-1fa5-41e4-a5c5-65a1b1d9503d.ico', '像做PPT一样做视频', 'https://www.laihua.com/', 3, 0, '2021-01-07 20:06:05', NULL, 1, NULL, 1);
@@ -709,7 +709,7 @@ CREATE TABLE `nav_site_config`  (
 -- ----------------------------
 -- Records of nav_site_config
 -- ----------------------------
-INSERT INTO `nav_site_config` VALUES (152819881111191552, '这个导航网站来源于格姗导航的开源项目。如果你有更好的想法，可以通过左边的邮箱与我联系。如果喜欢本站，可以分享给其他人，或者设置为主页，这是对我最大的支持！\'', '497301391@qq.com', '<p>这是一个导航网站,收入了大部分常用的网站，希望能够解决到你频繁收藏网站的烦恼！</p><p>显然，这是一个开源项目，主要放一些自己经常用到的网站。</p><p>开源项目来源：<a href=\"\\\" target=\"\\\">https://gitee.com/geshanzsq/geshanzsq-nav</a></p>', 10, 43728307660783616, '2023-05-21 16:51:39', 43728307660783616, '2023-05-21 16:58:51');
+INSERT INTO `nav_site_config` VALUES (152819881111191552, '这个导航网站来源于I.SALE的开源项目。如果你有更好的想法，可以通过左边的邮箱与我联系。如果喜欢本站，可以分享给其他人，或者设置为主页，这是对我最大的支持！\'', '497301391@qq.com', '<p>这是一个导航网站,收入了大部分常用的网站，希望能够解决到你频繁收藏网站的烦恼！</p><p>显然，这是一个开源项目，主要放一些自己经常用到的网站。</p><p>开源项目来源：<a href=\"\\\" target=\"\\\">https://gitee.com/geshanzsq/geshanzsq-nav</a></p>', 10, 43728307660783616, '2023-05-21 16:51:39', 43728307660783616, '2023-05-21 16:58:51');
 
 -- ----------------------------
 -- Table structure for sys_api

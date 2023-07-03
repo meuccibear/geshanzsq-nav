@@ -1,6 +1,7 @@
 package com.geshanzsq.common.framework.file.service.impl;
 
-import cn.hutool.core.lang.UUID;
+import cn.hutool.core.collection.CollectionUtil;
+import com.alibaba.fastjson.JSON;
 import com.geshanzsq.common.core.util.message.MessageUtils;
 import com.geshanzsq.common.core.util.string.StrUtils;
 import com.geshanzsq.common.framework.file.exception.FileException;
@@ -8,19 +9,15 @@ import com.geshanzsq.common.framework.file.property.FileUploadProperty;
 import com.geshanzsq.common.framework.file.service.FileService;
 import com.geshanzsq.common.framework.file.util.FileUploadUtils;
 import com.geshanzsq.common.framework.file.util.MimeTypeUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import java.io.*;
+import java.util.*;
 
 /**
  * 文件
@@ -38,7 +35,8 @@ public class FileServiceImpl implements FileService {
 
     /**
      * 文件上传
-     * @param file 文件
+     *
+     * @param file            文件
      * @param allowExtensions 允许上传文件类型
      * @return 文件全路径
      */
@@ -49,6 +47,7 @@ public class FileServiceImpl implements FileService {
 
     /**
      * 文件上传
+     *
      * @param file 文件
      * @return 文件全路径
      */
@@ -59,6 +58,7 @@ public class FileServiceImpl implements FileService {
 
     /**
      * 文件上传
+     *
      * @param file 文件
      * @return 文件全路径
      */
@@ -69,8 +69,9 @@ public class FileServiceImpl implements FileService {
 
     /**
      * 文件上传
-     * @param baseDirectory 基本目录
-     * @param file 文件
+     *
+     * @param baseDirectory   基本目录
+     * @param file            文件
      * @param allowExtensions 允许上传文件类型
      * @return 文件全路径
      */
@@ -103,11 +104,13 @@ public class FileServiceImpl implements FileService {
         File absoluteFile = null;
         try {
             // 4.1 获取上传的真实文件
-             absoluteFile = FileUploadUtils.getAbsoluteFile(baseDirectory, filePathName);
+            absoluteFile = FileUploadUtils.getAbsoluteFile(baseDirectory, filePathName);
             // 4.2 将内存文件写入磁盘中
-            file.transferTo(absoluteFile);
+//            file.transferTo(absoluteFile);
+            saveImg(file, absoluteFile);
         } catch (IOException e) {
-            log.error("文件上传失败：{}", e.getMessage());
+            log.error("文件上传失败:", e);
+//            log.error("文件上传失败：{}", e.getMessage());
             throw new FileException(MessageUtils.message("file.upload.fail"));
         }
         // 4.3 获取文件映射的地址
@@ -115,11 +118,52 @@ public class FileServiceImpl implements FileService {
         return fileMapPath;
     }
 
+
+    private void saveImg(MultipartFile file, File absoluteFile) {
+        FileOutputStream fileOutputStream = null;
+        InputStream ins = null;
+        try {
+            fileOutputStream = new FileOutputStream(absoluteFile);
+            int i = -1;
+            byte[] bytes = new byte[1024 * 1024];
+            ins = file.getInputStream();
+            while ((i = ins.read(bytes)) != -1) {
+                fileOutputStream.write(bytes, 0, i);
+            }
+        } catch (IOException e) {
+        } finally {
+            closeQuilty(ins);
+            closeQuilty(fileOutputStream);
+        }
+    }
+
+    private void closeQuilty(InputStream ins) {
+        if (ins != null) {
+            try {
+                ins.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private void closeQuilty(OutputStream out) {
+        if (out != null) {
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     /**
      * 图片上传
      *
      * @param moduleName 模块名
-     * @param file 文件
+     * @param file       文件
      * @return 文件全路径
      */
     @Override
@@ -127,10 +171,12 @@ public class FileServiceImpl implements FileService {
         return upload(fileUploadProperty.getBasePath() + "/" + moduleName, file, MimeTypeUtils.IMAGE_EXTENSION);
     }
 
+
     /**
      * 获取文件映射的地址
+     *
      * @param baseDirectory 基本路径
-     * @param filePathName 文件路径和名称
+     * @param filePathName  文件路径和名称
      * @return
      */
     private String getFileMapPath(String baseDirectory, String filePathName) {

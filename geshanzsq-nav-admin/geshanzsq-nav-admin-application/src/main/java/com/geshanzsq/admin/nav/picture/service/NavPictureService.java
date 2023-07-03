@@ -4,6 +4,8 @@ import com.geshanzsq.admin.nav.picture.po.NavPicture;
 import com.geshanzsq.common.framework.web.service.BaseService;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 导航图片
  *

@@ -35,8 +35,8 @@ public class StrUtils extends StringUtils {
 
     /**
      * 转换文本, {} 表示占位符，例：
-     * format("欢迎访问{blogName}博客，网站地址：{siteUrl}", "格姗导航", "http://gesdh.cn")
-     * format("欢迎访问{}博客，网站地址：{}", "格姗导航", "http://gesdh.cn")
+     * format("欢迎访问{blogName}博客，网站地址：{siteUrl}", "I.SALE", "http://gesdh.cn")
+     * format("欢迎访问{}博客，网站地址：{}", "I.SALE", "http://gesdh.cn")
      *
      * @param str    需要转换的字符串
      * @param params 参数

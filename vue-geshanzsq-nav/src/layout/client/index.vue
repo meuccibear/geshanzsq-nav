@@ -43,7 +43,7 @@
       :width="isMobile ? '100%' : '60%'"
       center
     >
-      <third-search />
+<!--      <third-search />-->
     </el-dialog>
 
     <settings ref="settingRef" />
@@ -57,7 +57,7 @@ import { useStore } from 'vuex'
 import Settings from '@/layout/components/Settings'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
-import ThirdSearch from './components/Search'
+// import ThirdSearch from './components/Search'
 import FooterBottom from './components/FooterBottom'
 
 defineProps({

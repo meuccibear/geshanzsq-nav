@@ -32,4 +32,7 @@ public interface ClientNavService {
      * 站内分类网站搜索列表
      */
     NavClientListVO categorySiteSearchList(String searchContent);
+
+    String getCarouselData();
+
 }

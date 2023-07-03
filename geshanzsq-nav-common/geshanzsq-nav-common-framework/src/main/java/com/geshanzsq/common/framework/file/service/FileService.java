@@ -2,6 +2,8 @@ package com.geshanzsq.common.framework.file.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 文件
  *
