@@ -72,8 +72,8 @@ swagger:
   title: I.SALE接口文档
   description: 包含用户管理、菜单管理、角色管理、数据字典、API 管理、参数配置、登录日志、操作日志、导航分类管理、网站管理等功能
   author: geshanzsq
-  url: http://gesdh.cn
-  email: 497301391@qq.com
+  url: http://i.sale
+  email: 1@qq.com
   version: 2.0.0
 
 # 防止XSS攻击

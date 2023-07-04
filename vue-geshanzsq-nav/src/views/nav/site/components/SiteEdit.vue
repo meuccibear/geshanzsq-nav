@@ -128,8 +128,8 @@ const editForm = ref({
   categoryId: undefined,
   siteName: undefined,
   score: 10,
-  free: 1,
-  reasonable: 1,
+  free: '1',
+  reasonable: '1',
   status: '1',
   sort: 0,
   sitePath: undefined

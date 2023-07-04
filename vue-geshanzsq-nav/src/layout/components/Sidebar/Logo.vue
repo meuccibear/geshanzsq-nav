@@ -50,7 +50,7 @@
 
 <script setup>
 import variables from '@/assets/styles/variables.module.scss'
-import logo from '@/assets/logo/logo.png'
+import logo from '@/assets/logo/logo.svg'
 import { useStore } from 'vuex'
 import { computed } from '@vue/runtime-core'
 import { title } from '@/config/setting.config'

@@ -53,11 +53,15 @@ export default {
 
 <style lang="scss">
 .lz-banner {
-  width: 800px;
-  height: 488px;
+  //width: 800px;
+  //height: 488px;
   .el-carousel__container {
-    width: 800px;
-    height: 488px;
+    //width: 73rem;
+    //height: 23rem;
+    width: 90vw;
+    height: 24vw;
+    //width: 1168px;
+    //height: 368px;
     img {
       display: block;
       width: 100%;
