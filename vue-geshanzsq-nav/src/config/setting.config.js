@@ -5,7 +5,7 @@ module.exports = {
   // 标题，此项修改后需要重启项目
   title: 'I.SALE',
   // 网站标题
-  siteTitle: 'I.SALE - 可自定义的简洁导航网站',
+  siteTitle: 'I.SALE - 你的AI工具箱',
   // 网站加载时显示的内容
   siteLoading: '正在为您加载系统资源，请耐心等待',
   // 网站描述
